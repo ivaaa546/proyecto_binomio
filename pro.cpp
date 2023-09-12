@@ -24,7 +24,7 @@ unsigned long long Combinacion(int n, int k) {
 void expansion_bionomio(int combinacion_, int coeficiente1, int coeficiente2, char literal1, char literal2) {
     for (int i = 0; i <= combinacion_; ++i) {
         unsigned long long expansion = Combinacion(combinacion_, i);
-        cout << expansion << " * " << "(" << coeficiente1 << literal1 << ")^" << (combinacion_ - i) << " * " << "(" << coeficiente2 << literal2 << ")^" << i;
+        cout << expansion << " * " << "(." << coeficiente1 << literal1 << ")^" << (combinacion_ - i) << " * " << "(" << coeficiente2 << literal2 << ")^" << i;
         
         // Si i es menor, seguirá poniendo el +, pero si i es igual que el exponente, se acaba la operación
         if (i < combinacion_) {
