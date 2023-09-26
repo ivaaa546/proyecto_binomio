@@ -1,14 +1,24 @@
 #include <iostream>
 #include <cmath>
+#include <cctype>
 using namespace std;
+
+struct literales
+{
+    char literal1;
+    char literal2;
+    int  exponente_literal1;
+    int  exponente_literal2;
+};
+
 
 //  para calcular el factorial de un número
 unsigned long long Factorial(int num) {
-    unsigned long long factorial_ = 1;
+    unsigned long long calculo_factorial = 1;
     for (int i = 1; i <= num; i++) {
-        factorial_ *= i;
+        calculo_factorial *= i;
     }
-    return factorial_;
+    return calculo_factorial;
 }
 
 //calculo combinaciones
@@ -21,10 +31,9 @@ unsigned long long Combinacion(int n, int k) {
 }
 
 //expansión del binomio //
-void expansion_bionomio(int combinacion_, int coeficiente1, int coeficiente2, char literal1, char literal2) {
+void expansion_bionomio(int combinacion_, int coeficiente1, int coeficiente2, char l1, char l2, int expl1, int expl2) {
     for (int i = 0; i <= combinacion_; ++i) {
-        unsigned long long expansion = Combinacion(combinacion_, i);
-        cout << expansion << " * " << "(." << coeficiente1 << literal1 << ")^" << (combinacion_ - i) << " * " << "(" << coeficiente2 << literal2 << ")^" << i;
+        cout <<"("<<combinacion_<<"C"<<i<<")" << "(" << coeficiente1 << l1 <<"^"<<expl1<< ")^" << (combinacion_ - i) << "(" << coeficiente2 << l2 <<"^"<<expl2<< ")^" << i;
         
         // Si i es menor, seguirá poniendo el +, pero si i es igual que el exponente, se acaba la operación
         if (i < combinacion_) {
@@ -37,53 +46,70 @@ void expansion_bionomio(int combinacion_, int coeficiente1, int coeficiente2, ch
 }
 
 int main() {
-    int combinacion;
+    int exponente;
     int coeficiente1_, coeficiente2_;
-    char literal1_, literal2_;
+    literales exp;
 
     cout << "Ingresa el exponente del binomio: ";
-    cin >> combinacion;
+    cin >> exponente;
+    
+    if (cin.fail()) {
+    cout << "No es un número. Intente de nuevo." << endl;
+    return 1;
+}
+
 
     cout << "\nIngrese el primer coeficiente: ";
     cin >> coeficiente1_;
+    if (cin.fail()) {
+    cout << "No es un digito, por favor intente de nuevo" << endl;
+    return 1;
+}
+
     
     cout << "Ingrese el primer literal del coeficiente: ";
-    cin >> literal1_;
+    cin >> exp.literal1>>exp.exponente_literal1;
     
     cout << "\nIngrese el segundo coeficiente: ";
     cin >> coeficiente2_;
+    if (cin.fail()) {
+    cout << "No es un digito, por favor intente de nuevo" << endl;
+    return 1;
+}
+
     
     cout << "Ingrese el segundo literal del coeficiente: ";
-    cin >> literal2_;  
+    cin >> exp.literal2>>exp.exponente_literal2; 
 
-    cout << "(" << coeficiente1_ << literal1_ << " + " << coeficiente2_ << literal2_ << ")^" << combinacion << endl;
+    cout << "(" << coeficiente1_ << exp.literal1 <<"^"<<exp.exponente_literal1<<" + " << coeficiente2_ << exp.literal2<<"^"<<exp.exponente_literal2<< ")^" << exponente<< endl;
     
-    expansion_bionomio(combinacion, coeficiente1_, coeficiente2_, literal1_, literal2_);
+    expansion_bionomio(exponente, coeficiente1_, coeficiente2_, exp.literal1, exp.exponente_literal2, exp.exponente_literal1, exp.exponente_literal2);
 
     //resutado de toda la operacion
-    cout << "Resultado: ";
-    for (int i = 0; i <= combinacion; ++i) {
-        unsigned long long expansion = Combinacion(combinacion, i);
-        int coeficiente = expansion * pow(coeficiente1_, combinacion - i) * pow(coeficiente2_, i);
-        if (coeficiente != 0) {
+    cout << "\nResultado: ";
+    for (int i = 0; i <= exponente; ++i) {
+        unsigned long long calculo_combinacion = Combinacion(exponente, i);
+        int resultado = calculo_combinacion * pow(coeficiente1_, exponente - i) * pow(coeficiente2_, i);
+        //esta parte hace para evitar imprimir términos con coeficientes iguales a cero
+        if (resultado != 0) {
             if (i > 0) {
                 cout << "+ ";
             }
-            cout << coeficiente;
+            cout << resultado;
             
             //literal 1 
-            if (combinacion - i > 0) {
-                cout << literal1_;
-                if (combinacion - i > 1) {
-                    cout << "^" << (combinacion - i);
+            if (exp.exponente_literal1 * (exponente - i) > 0) {
+                cout << exp.literal1;
+                if (exp.exponente_literal1 * (exponente - i) > 1) {
+                    cout << "^" << exp.exponente_literal1*(exponente - i);
                 }
             }
 
             //literal 2
-            if (i > 0) {
-                cout << literal2_;
-                if (i > 1) {
-                    cout << "^" << i;
+            if (exp.exponente_literal2 * i > 0) {
+                cout << exp.literal2;
+                if (exp.exponente_literal2 * i > 1) {
+                    cout << "^" <<exp.exponente_literal2* i;
                 }
             }
             cout << " ";
