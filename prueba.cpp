@@ -92,12 +92,16 @@ int main() {
     cout << "No es un número. Intente de nuevo." << endl;
     return 1;
 }
+
+
     cout << "\nIngrese el primer coeficiente: ";
     cin >> coeficiente1_;
     if (cin.fail()) {
     cout << "No es un digito, por favor intente de nuevo" << endl;
     return 1;
 }
+
+    
     cout << "Ingrese el primer literal del coeficiente: ";
     cin >> exp.literal1>>exp.exponente_literal1;
     
@@ -111,12 +115,14 @@ int main() {
     cin >> exp.literal2>>exp.exponente_literal2; 
 
     cout << "(" << coeficiente1_ << exp.literal1 <<"^"<<exp.exponente_literal1<<" + " << coeficiente2_ << exp.literal2<<"^"<<exp.exponente_literal2<< ")^" << exponente<< endl;
-
-    // Llamada a la función para mostrar el binomio expandido
+    
     expansion_bionomio(exponente, coeficiente1_, coeficiente2_, exp.literal1, exp.exponente_literal2, exp.exponente_literal1, exp.exponente_literal2);
     // Llamada a la función para calcular y mostrar el resultado
     calcularResultado(exponente, coeficiente1_, coeficiente2_, exp);
+
+
     cout << endl;
 
+    
     return 0;
 }
