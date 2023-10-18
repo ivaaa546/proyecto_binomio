@@ -179,7 +179,7 @@ int main() {
         if (cin >> exponente) {
             break; // Salir del bucle si se ingresó un número válido
         } else {
-            cout << "No es un numero. Intente de nuevo." << endl;
+            cout << "No es un numero, ingrese la opcion valida" << endl;
             cin.clear(); // Restablecer el estado de cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar el buffer de entrada
         }
@@ -190,7 +190,7 @@ int main() {
         if (cin >> coeficiente1_) {
             break; // Salir del bucle si se ingresó un número válido
         } else {
-            cout << "No es un numero. Intente de nuevo." << endl;
+            cout << "No es un numero, ingrese la opcion valida" << endl;
             cin.clear(); // Restablecer el estado de cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar el buffer de entrada
         }
@@ -204,7 +204,7 @@ int main() {
         if (cin >> coeficiente2_) {
             break; // Salir del bucle si se ingresó un número válido
         } else {
-            cout << "No es un numero. Intente de nuevo." << endl;
+            cout << "No es un numero, ingrese la opcion valida" << endl;
             cin.clear(); // Restablecer el estado de cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar el buffer de entrada
         }
@@ -257,7 +257,7 @@ int main() {
         if (cin >> coeficiente2_) {
             break; // Salir del bucle si se ingresó un número válido
         } else {
-            cout << "No es un numero. Intente de nuevo." << endl;
+            cout << "No es un numero, ingrese la opcion valida" << endl;
             cin.clear(); // Restablecer el estado de cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar el buffer de entrada
         }
@@ -270,7 +270,7 @@ int main() {
         if (cin >> terminocalcular) {
             break; // Salir del bucle si se ingresó un número válido
         } else {
-            cout << "No es un numero. Intente de nuevo." << endl;
+            cout << "No es un numero, ingrese la opcion valida" << endl;
             cin.clear(); // Restablecer el estado de cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar el buffer de entrada
         }
